@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% get_media_prefix %}/landing/images/logo.svg" type="image/x-icon">
+    <title>Услуги - Путешествия</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'landing/css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% get_media_prefix %}/landing/images/logo.png" alt="Логотип" style="width: 50px; height: 54px;">
+                Путешествия</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'landing:about' %}">О нас</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Услуги
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#tours">Туры</a>
+                            <a class="dropdown-item" href="#excursions">Экскурсии</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item">Специальные предложения</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'landing:contacts' %}">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+            <h1 class="display-4">Наши Услуги</h1>
+            <p class="lead">Мы предлагаем разнообразные услуги для вашего идеального отдыха</p>
+        </div>
+    </header>
+
+    <section id="tours" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Туры</h2>
+            <p class="text-center mb-5">Откройте для себя удивительные места с нашими организованными турами по всему миру.</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="card-title">Тур по Европе</h5>
+                            <p class="card-text">Путешествие по самым красивым городам Европы: Париж, Рим, Барселона.</p>
+                            <p class="font-weight-bold">Цена: 500€</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="card-title">Тур по Азии</h5>
+                            <p class="card-text">Откройте для себя культуру и традиции Азии: Япония, Таиланд, Индия.</p>
+                            <p class="font-weight-bold">Цена: 600€</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="card-title">Тур по Америке</h5>
+                            <p class="card-text">Исследуйте захватывающие города США: Нью-Йорк, Лос-Анджелес, Чикаго.</p>
+                            <p class="font-weight-bold">Цена: 700€</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="excursions" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Экскурсии</h2>
+            <p class="text-center mb-5">Откройте для себя увлекательные экскурсии по самым интересным местам.</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="card-title">Экскурсия по музеям</h5>
+                            <p class="card-text">Посетите самые известные музеи мира и узнайте об их истории.</p>
+                            <p class="font-weight-bold">Цена: 50€</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="card-title">Природные экскурсии</h5>
+                            <p class="card-text">Исследуйте удивительные природные ландшафты и заповедники.</p>
+                            <p class="font-weight-bold">Цена: 70€</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="card-title">Гастрономические туры</h5>
+                            <p class="card-text">Попробуйте местные деликатесы и узнайте секреты кулинарии.</p>
+                            <p class="font-weight-bold">Цена: 90€</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="special-offers" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Специальные предложения</h2>
+            <p class="text-center mb-5">Доступно только для зарегистрированных пользователей. Присоединяйтесь к нам, чтобы получить доступ к эксклюзивным предложениям!</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="card-title">Скидка 20% на туры</h5>
+                            <p class="card-text">Получите 20% скидку на все туры, если вы зарегистрированы.</p>
+                            <p class="font-weight-bold">Цена: 400€</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="card-title">Бесплатная экскурсия</h5>
+                            <p class="card-text">Зарегистрированные пользователи могут получить одну бесплатную экскурсию при покупке тура.</p>
+                            <p class="font-weight-bold">Цена: 0€</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="card-title">Эксклюзивный доступ к мероприятиям</h5>
+                            <p class="card-text">Участие в закрытых мероприятиях и акциях только для зарегистрированных пользователей.</p>
+                            <p class="font-weight-bold">Цена: 0€</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Контактная информация: info@example.com | Телефон: +7 (938) 306-05-60</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p class="copyright">© 2025 Все права защищены.</p>
+    </footer>
+
+<!-- Подключение необходимых скриптов Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

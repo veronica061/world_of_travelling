@@ -1,0 +1,320 @@
+.fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+    
+body {
+    padding-top: 70px;
+}
+    
+.section {
+    padding: 60px 0;
+}
+    
+.jumbotron {
+    background: linear-gradient(#ffffff, #e0a6dd);
+    background-size: cover;
+    color: black;
+    margin: 0;
+}
+
+#tips{
+    background: linear-gradient(#e0a6dd, #c8d0f4, white);
+}
+    
+#tips ul {
+    max-width: 600px;
+    margin: 0 auto;
+}
+    
+#tips li {
+    background-color: #e6cce4;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+    
+#tips li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+    
+#tips li strong {
+    color: #3a5eff;
+}
+    
+#contact-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color:#e6cce4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+    
+#contact-form .form-group {
+    margin-bottom: 15px;
+}
+    
+#contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+    
+#contact-form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+    
+#contact-form .form-control:focus {
+    border-color: #7e82d0;
+}
+    
+#contact-form button {
+    background-color: #4e68e0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+    
+#contact-form button:hover {
+    background-color: #a6dde0;
+}
+    
+#reviews blockquote {
+    background-color: #e6cce4;
+    border-left: 5px solid #4e68e0;
+    margin: 20px 0;
+    padding: 15px 20px;
+    position: relative;
+    font-style: italic;
+    color: #555;
+}
+    
+#reviews blockquote footer {
+    font-size: 0.9em;
+    color: #333;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.site-footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+    
+.footer-content {
+    margin-bottom: 10px;
+}
+    
+.footer-content p {
+    margin: 0;
+}
+    
+.social-links a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+    
+.copyright {
+    font-size: 0.8em;
+    margin: 0;
+}
+
+#mission {
+    background: linear-gradient(#e0a6dd, #c8d0f4);
+    padding: 60px 0;
+    color: #333;
+}
+
+#mission h2 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+
+#team {
+    background: linear-gradient(#c8d0f4, #e0a6dd, white);
+}
+
+.mission-description {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.col-md-4:hover {
+    transform: scale(1.05);
+}
+
+.rounded-circle {
+    border: 3px solid #fff;
+    margin-bottom: 15px;
+}
+
+.media {
+    background: #e6cce4;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.media:hover {
+    transform: scale(1.02);
+}
+
+.fa-check-circle {
+    color: #3a5eff;
+}
+
+#contacts {
+    background: linear-gradient(#e0a6dd, white);
+    padding: 60px 0; 
+    color: #333; 
+}
+
+#contacts h2 {
+    margin-bottom: 30px; 
+    font-size: 2.5rem;
+}
+
+#map{
+    background: linear-gradient( white, #c8d0f4, white);
+}
+
+#tours {
+    background: linear-gradient(#e0a6dd, #c8d0f4, white);
+    padding: 60px 0; 
+    color: #333;
+}
+
+#excursions {
+    background: linear-gradient(white, #e0a6dd, #c8d0f4);
+    padding: 60px 0; 
+    color: #333;
+}
+
+#special-offers {
+    background: linear-gradient(#c8d0f4, #e0a6dd, white);
+    padding: 60px 0; 
+    color: #333; 
+}
+#tours h2 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+
+.register-button {
+    background-color: #4e68e0; 
+    color: white; 
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-button:hover {
+    background-color: #a6dde0;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #7e82d0;
+}
+
+#registration-form button {
+    background-color: #4e68e0;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+    width: 100%;
+}
+
+#registration-form button:hover {
+    background-color: #a6dde0;
+}
+
+/* Стили для невалидных полей */
+.form-control:invalid {
+    border-color: #ff4444 !important; /* Красная рамка для невалидных полей */
+}
+
+/* Стили для валидных полей */
+.form-control:valid {
+    border-color: #00C851 !important; /* Зеленая рамка для валидных полей */
+}
+
+.review-item {
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.review-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.alert {
+    animation: fadeIn 0.3s ease;
+}
+
+#reviewsContainer {
+    overflow: visible; /* Убедитесь, что контейнер не скрывает содержимое */
+}
+
+.review-item {
+    display: block; /* Убедитесь, что элементы отзывов отображаются */
+}
+
+.form-group:nth-child(4) {
+    display: none;
+}

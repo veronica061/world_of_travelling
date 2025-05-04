@@ -1,0 +1,42 @@
+services:
+  redis:
+    image: redis
+    networks:
+      - redis
+
+  main:
+    build: ./main_service
+    networks:
+      - redis
+    ports:
+      - 8000:8000
+    volumes:
+      - ./main_service/src:/app/src
+      - ./db.sqlite3:/app/db.sqlite3
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && daphne -b 0.0.0.0 -p 8000 my_site.asgi:application"
+
+  auth:
+    build: ./auth_service
+    networks:
+      - redis
+    ports:
+      - 8001:8001
+    volumes:
+      - ./auth_service/src:/app/src
+      - ./db.sqlite3:/app/db.sqlite3
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8001"
+
+  info:
+    build: ./info_service
+    networks:
+      - redis
+    ports:
+      - 8002:8002
+    volumes:
+      - ./info_service/src:/app/src
+      - ./db.sqlite3:/app/db.sqlite3
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8002"
+
+
+networks:
+  redis:

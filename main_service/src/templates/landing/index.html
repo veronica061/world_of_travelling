@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% get_media_prefix %}/landing/images/logo.svg" type="image/x-icon">
+    <title>Путешествия!</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Подключение пользовательских стилей -->
+    <link href="{% static 'landing/css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{% get_media_prefix %}/landing/images/logo.png" alt="Логотип" style="width: 50px; height: 54px;">
+            Путешествия</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">О нас</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Услуги
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item">Туры</a>
+                        <a class="dropdown-item">Экскурсии</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">Специальные предложения</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+        <h1 class="display-4">Добро пожаловать в мир путешествий</h1>
+        <p class="lead">Откройте для себя новые горизонты с нами</p>
+    </div>
+</header>
+<!-- Карусель -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% get_media_prefix %}/landing/images/paris.jpg" class="d-block w-100" alt="Париж">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Париж, Франция</h5>
+                <p>Город любви и романтики</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% get_media_prefix %}/landing/images/tokyo.jpg" class="d-block w-100" alt="Токио">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Токио, Япония</h5>
+                <p>Современность и традиции</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% get_media_prefix %}/landing/images/newyork.jpg" class="d-block w-100" alt="Нью-Йорк">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Нью-Йорк, США</h5>
+                <p>Город, который никогда не спит</p>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    <section id="tips" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Советы путешественникам</h2>
+            <ul class="list-unstyled">
+                <li><strong>Планируйте заранее:</strong> Забронируйте билеты и жилье заранее для лучшей цены.</li>
+                <li><strong>Изучите местные обычаи:</strong> Это поможет избежать недоразумений.</li>
+                <li><strong>Путешествуйте налегке:</strong> Берите только самое необходимое.</li>
+            </ul>
+        </div>
+        <h2 class="text-center mb-4">Отзывы наших клиентов</h2>
+    </section>
+    <section id="reviews" class="py-5">
+        {% for r in reviews %}
+        <div>
+            <blockquote class="blockquote">
+                <p>{{ r.text }}</p>
+                <footer class="blockquote-footer">
+                    <p>Автор: {{ r.author }}</p>
+                    <small class="text-muted"><p>Дата: {{ r.created_at }}</p></small>
+                </footer>
+            </blockquote>
+        </div>
+        {% endfor %}
+        <div class="text-center mt-4">
+            <button class="btn btn-primary" id="addReviewBtn"
+                    {% if not user.is_authenticated %}disabled{% endif %}>
+                Оставить отзыв
+            </button>
+            {% if not user.is_authenticated %}
+            <p class="small text-muted mt-2">
+                Для добавления отзыва <a href="http://localhost:8001/registration/">войдите</a>
+            </p>
+            {% endif %}
+        </div>
+    </section>
+    <div class="modal fade" id="reviewModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Оставить отзыв</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="reviewForm" novalidate>
+                        {% csrf_token %}
+                        <textarea class="form-control" id="reviewText" required minlength="10"></textarea>
+                        <button type="submit" class="btn btn-primary mt-3">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Контактная информация: info@example.com | Телефон: +7 (938) 306-05-60</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p class="copyright">© 2025 Все права защищены.</p>
+    </footer>
+</div>
+
+<!-- Подключение необходимых скриптов Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Открытие модального окна
+    $('#addReviewBtn').click(function() {
+        $('#reviewModal').modal('show');
+    });
+
+    // Подключение к WebSocket
+    const reviewSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/reviews/'
+    );
+
+    // Обработка новых отзывов
+    reviewSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const reviewHtml = `
+        <div>
+            <blockquote class="blockquote">
+                <p>${data.text}</p>
+                <footer class="blockquote-footer">
+                    ${data.author} <small class="text-muted">${data.created_at}</small>
+                </footer>
+            </blockquote>
+        </div>
+        `;
+        $('#reviews').prepend(reviewHtml);
+    };
+
+    // Отправка формы
+    $('#reviewForm').submit(function(e) {
+        e.preventDefault();
+        const reviewText = $('#reviewText').val().trim();
+
+        if (!reviewText || reviewText.length < 10) {
+            alert('Отзыв должен содержать минимум 10 символов');
+            return;
+        }
+
+        $.ajax({
+            url: '{% url "landing:submit_review" %}',
+            method: 'POST',
+            data: {
+                'text': reviewText,
+                'csrfmiddlewaretoken': $('[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                $('#reviewModal').modal('hide');
+                $('#reviewText').val('');
+            },
+            error: function(xhr) {
+                alert('Ошибка: ' + xhr.statusText);
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
