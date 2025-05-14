@@ -105,7 +105,7 @@ CACHES = {
     }
 }
 
-# Отключаем проверку CSRF между сервисами (только для разработки!)
+# Отключаем проверку CSRF между сервисами
 CSRF_COOKIE_PATH = '/'
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',

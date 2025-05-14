@@ -28,9 +28,6 @@ def contacts(request):
             message = form.cleaned_data['message']
 
 
-            contact_message = ContactMessage.objects.create(name=name, email=email, message=message)
-
-
             send_mail(
                 subject=f"Новое сообщение от {name}",
                 message=message,
@@ -42,19 +39,14 @@ def contacts(request):
             # Формируем сообщение для Telegram
             telegram_msg = (
                 f"<b>Новое сообщение с сайта!</b>\n\n"
-                f"<b>Имя:</b> {contact_message.name}\n"
-                f"<b>Email:</b> {contact_message.email}\n"
-                f"<b>Сообщение:</b>\n{contact_message.message}"
+                f"<b>Имя:</b> {name}\n"
+                f"<b>Email:</b> {email}\n"
+                f"<b>Сообщение:</b>\n{message}"
             )
-
-            if send_telegram_notification(telegram_msg):
-                messages.success(request, 'Ваше сообщение отправлено! Мы скоро свяжемся с вами.')
-            else:
-                messages.warning(request, 'Сообщение сохранено, но возникла проблема с уведомлением.')
 
 
             messages.success(request, 'Ваше сообщение успешно отправлено!')
-            return redirect('/contacts')
+            return render(request, 'landing/contacts.html', {'form': form, 'success_message': "Сообщение отправлено"})
         else:
 
             for field, errors in form.errors.items():

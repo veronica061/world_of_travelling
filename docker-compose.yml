@@ -1,8 +1,13 @@
 services:
   redis:
-    image: redis
+    image: redis:alpine
     networks:
       - redis
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
 
   main:
     build: ./main_service
@@ -14,6 +19,11 @@ services:
       - ./main_service/src:/app/src
       - ./db.sqlite3:/app/db.sqlite3
     command: sh -c "python manage.py makemigrations && python manage.py migrate && daphne -b 0.0.0.0 -p 8000 my_site.asgi:application"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
 
   auth:
     build: ./auth_service
@@ -25,6 +35,11 @@ services:
       - ./auth_service/src:/app/src
       - ./db.sqlite3:/app/db.sqlite3
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8001"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
 
   info:
     build: ./info_service
@@ -36,6 +51,11 @@ services:
       - ./info_service/src:/app/src
       - ./db.sqlite3:/app/db.sqlite3
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8002"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 50M
 
 
 networks:

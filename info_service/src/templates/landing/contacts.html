@@ -102,14 +102,8 @@
             <h2 class="text-center">Напишите нам</h2>
             <div class="contact-form">
                 <!-- Блок для отображения сообщений -->
-                {% if messages %}
-                <div class="messages">
-                    {% for message in messages %}
-                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-                        {{ message }}
-                    </div>
-                    {% endfor %}
-                </div>
+               {% if success_message %}
+                 <div class="success-message">Сообщение успешно отправлено!</div>
                 {% endif %}
 
                 <form method="post" novalidate>

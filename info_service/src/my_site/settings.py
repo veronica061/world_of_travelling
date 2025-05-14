@@ -90,23 +90,29 @@ DATABASES = {
     }
 }
 
-SECRET_KEY = "secretkey"
 
-# Настройки кук
-SESSION_COOKIE_NAME = "sessionid_shared"
-SESSION_COOKIE_DOMAIN = ".localhost"  # Для локального тестирования
-SESSION_COOKIE_PATH = "/"
-SESSION_ENGINE = "django.contrib.sessions.backends.db"
+# Настройки сессий и кук
+SESSION_COOKIE_NAME = 'sessionid_shared'
+SESSION_COOKIE_PATH = '/'  # Важно для разных портов
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
-# Кодировка кук
-SESSION_COOKIE_ENCODING = 'utf-8'
-SESSION_COOKIE_NAME = 'sessionid_utf8'
+# Общий кеш (Redis)
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
 
-# Локализация
-LANGUAGE_CODE = 'ru-ru'
-USE_I18N = True
-USE_L10N = True
-
+# Отключаем проверку CSRF между сервисами
+CSRF_COOKIE_PATH = '/'
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',
+    'http://localhost:8001'
+]
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
