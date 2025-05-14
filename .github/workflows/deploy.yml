@@ -8,12 +8,15 @@ jobs:
     steps:
     - name: setup ssh
       run: |
-        apt-get -y -q update
-        apt-get -y -q install ssh
         install -m 600 -D /dev/null ~/.ssh/id_ed25519
-        echo ${{ secrets.SSH_PRIVATE_KEY }} | base64 -d > ~/.ssh/id_ed25519
-        ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+        echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_ed25519
+        ssh-keyscan $SSH_HOST > ~/.ssh/known_hosts
+      with:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
     - name: git pull
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull && exit"
-    - name: cleanup
-      run: rm -rf ~/.ssh
+      run: ssh $SSH_USER@$SSH_HOST "cd $WORK_DIR && git pull && exit"
+      with:
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        WORK_DIR: ${{ secrets.WORK_DIR }}
