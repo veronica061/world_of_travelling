@@ -180,3 +180,7 @@ ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGINS = [
 'http://45.11.27.183/'
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+'http://45.11.27.183/'
+]
