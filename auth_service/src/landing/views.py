@@ -17,7 +17,7 @@ def registration(request):
             user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user)  # Входим в систему
-                return redirect("http://45.11.27.183/")  # Перенаправляем на главную страницу
+                return redirect("http://worldoftravelling.chickenkiller.com/")  # Перенаправляем на главную страницу
     else:
         form = SignUpForm()
     return render(request, 'landing/signup.html', {'form': form})
@@ -33,7 +33,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, 'Вы успешно вошли в систему!')
-                return redirect("http://45.11.27.183/")
+                return redirect("http://worldoftravelling.chickenkiller.com/")
             else:
                 messages.error(request, 'Неправильный email или пароль.')
         else:
